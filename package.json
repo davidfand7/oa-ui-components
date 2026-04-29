@@ -1,0 +1,58 @@
+{
+  "name": "oa-ui-components",
+  "version": "1.0.0",
+  "description": "Battle-tested React components, hooks, and utilities from the OpenAgentic project. Includes 8 built-in AI agents for code review, generation, testing, and more.",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./agents/*": "./agents/*.json"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "typescript",
+    "tailwind",
+    "ui",
+    "hooks",
+    "utilities",
+    "design-system",
+    "dark-mode",
+    "openagent",
+    "ai-agents",
+    "shadcn"
+  ],
+  "author": "David Fand <davidfand303@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/davidfand7/oa-ui-components#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davidfand7/oa-ui-components.git"
+  },
+  "bugs": {
+    "url": "https://github.com/davidfand7/oa-ui-components/issues"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "lucide-react": ">=0.400.0",
+    "framer-motion": ">=11.0.0",
+    "sonner": ">=1.0.0",
+    "clsx": ">=2.0.0",
+    "tailwind-merge": ">=2.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "files": [
+    "components",
+    "hooks",
+    "utils",
+    "agents",
+    "templates",
+    "cookbook",
+    "index.ts",
+    "README.md",
+    "LICENSE"
+  ]
+}

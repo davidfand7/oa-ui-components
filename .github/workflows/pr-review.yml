@@ -1,0 +1,78 @@
+name: AI Component Review
+
+on:
+  pull_request:
+    paths:
+      - 'components/**/*.tsx'
+      - 'hooks/**/*.ts'
+      - 'utils/**/*.ts'
+
+jobs:
+  review:
+    name: OpenAgentic Code Review
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get changed files
+        id: changed
+        uses: tj-actions/changed-files@v44
+        with:
+          files: |
+            components/**/*.tsx
+            hooks/**/*.ts
+            utils/**/*.ts
+
+      - name: Post AI review prompt
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const changedFiles = `${{ steps.changed.outputs.all_changed_files }}`.split(' ').filter(Boolean);
+
+            if (changedFiles.length === 0) return;
+
+            const fileList = changedFiles.map(f => `- \`${f}\``).join('\n');
+
+            const body = [
+              '## 🤖 AI Code Review Available',
+              '',
+              'This PR modifies the following component files:',
+              fileList,
+              '',
+              '**Get an instant AI review using OpenAgentic:**',
+              '',
+              '1. Copy the diff from the **Files changed** tab above',
+              '2. Open the [React Component Reviewer agent](https://openagentic.site/app/workflow-importer) in OpenAgentic',
+              '   - Import `agents/code-reviewer.json` from this repo if you haven\'t already',
+              '3. Paste the diff and ask: *"Review this component change"*',
+              '',
+              'The reviewer checks for: Tailwind conflicts · dark mode · accessibility · reusability · oa-ui-components adoption opportunities.',
+              '',
+              '<details>',
+              '<summary>📋 All available agents for this repo</summary>',
+              '',
+              '| Agent | Import file | Use it for |',
+              '|-------|-------------|-----------|',
+              '| Component Advisor | `agents/component-advisor.json` | "Which component should I use for X?" |',
+              '| Code Reviewer | `agents/code-reviewer.json` | PR review, code quality check |',
+              '| Component Generator | `agents/component-generator.json` | Scaffold a new component |',
+              '| Design System Auditor | `agents/design-system-auditor.json` | Find color/dark mode inconsistencies |',
+              '| Migration Helper | `agents/migration-helper.json` | Replace duplicated code with oa-ui-components |',
+              '| Accessibility Auditor | `agents/accessibility-auditor.json` | WCAG 2.1 AA compliance check |',
+              '| Test Writer | `agents/test-writer.json` | Generate RTL tests |',
+              '| Storybook Writer | `agents/storybook-writer.json` | Generate Storybook stories |',
+              '| Tailwind Optimizer | `agents/tailwind-optimizer.json` | Fix class conflicts & dark mode gaps |',
+              '',
+              'All agents import via [OpenAgentic Workflow Importer](https://openagentic.site/app/workflow-importer).',
+              '</details>',
+            ].join('\n');
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body,
+            });
