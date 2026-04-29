@@ -6,6 +6,23 @@ Built with **Tailwind CSS**, **Radix UI**, **Lucide React**, and **shadcn/ui** c
 
 ---
 
+## 🤖 AI-Powered Component Advisor
+
+This is the only component library on GitHub with a **built-in AI advisor** — powered by [OpenAgentic](https://openagentic.site).
+
+Import the advisor agent into OpenAgentic and ask it anything:
+- *"Which component should I use for a status indicator?"*
+- *"Show me how to use ScoreGauge with the ring variant"*
+- *"What's the difference between TourHint and FeatureDiscoveryBanner?"*
+
+**How to import:**
+1. Copy the contents of [`agent.json`](./agent.json) in this repo
+2. Go to [OpenAgentic → Workflow Importer](https://openagentic.site/app/workflow-importer)
+3. Select **"Description / JSON"**, paste, and click Import
+4. Chat with your new Component Advisor agent
+
+---
+
 ## Components
 
 | Component | Category | Description |
