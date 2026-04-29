@@ -128,4 +128,4 @@ This repo includes an [AI PR review workflow](./.github/workflows/pr-review.yml)
 Extracted from [OpenAgentic](https://openagentic.site) — an open-source AI agent control plane for building, testing, and deploying AI agents.  
 Found across 27 repos, scored for reusability. Only score-3 components included.
 
-MIT License · Built by [David Fand](https://github.com/davidfand7)
+MIT License · Built by [David Francis Anderson](https://github.com/davidfand7)
