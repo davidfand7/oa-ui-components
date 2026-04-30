@@ -27,7 +27,7 @@ The only component library on GitHub with a full AI development toolkit included
 
 **How to import any agent:**
 1. Open the JSON file above and copy its contents
-2. Go to [OpenAgentic → Workflow Importer](https://openagentic.site/app/workflow-importer)
+2. Log in to [OpenAgentic](https://openagentic.site) → **Build → Workflow Importer** (or go directly to [openagentic.site/app/workflow-importer](https://openagentic.site/app/workflow-importer))
 3. Select **"Description / JSON"**, paste, click Import
 4. Chat with your agent
 
